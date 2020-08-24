@@ -1,0 +1,182 @@
+<!DOCTYPE HTML>
+
+<HEAD>
+    <meta charset="UTF-8">
+    <title>Szkolenia</title>
+    <link href="kaskada.css" rel="stylesheet" type="text/css" />
+</HEAD>
+
+<BODY>
+
+    <article>
+        <h1>VALIDATOR:</h1>
+        
+        <label class="imie">Imię: </label><input type="text" id="imie" size="20" placeholder="Podaj imię" required><br />
+        <label class="nazwisko">Nazwisko: </label><input type="text" id="nazwisko" size="20" placeholder="Podaj nazwisko" required><br />
+        
+        <select id="lista">
+                <option>Technik informatyk</option>
+                <option>Technik organizacji reklamy</option>
+                <option>Technik elektornik</option>
+                <option>Technik mechanik</option>
+        </select><br>
+
+        <label class="pl">Język polski: </label><input type="number" min=1 max=6 id="pl" size="20" placeholder="Ocena"><br />
+        <label class="ang">Język obcy: </label><input type="number" min=1 max=6 id="ang" size="20" placeholder="Ocena"><br />
+        <label class="mat">Matematyka: </label><input type="number" min=1 max=6 id="mat" size="20" placeholder="Ocena"><br />
+        <label class="inf">Informatyka: </label><input type="number" min=1 max=6 id="inf" size="20" placeholder="Ocena"><br /><br />
+
+        <label class="wol">Wolontariat: </label><input type="checkbox" id="ckb1" value="10"><br>
+        <label class="olimp">Olimpiada (laureat): </label><input type="checkbox" id="ckb2" value="10"><br><br>
+
+        <label class="data">Data zgłoszenia: </label><input type="date" id="data" size="20" placeholder="dd.mm.rrrr" required><br /><br />
+        
+        <input class="przycisk" type="button" id="guzik" onclick="checkData()" value="Wykonaj"></input><br><br>
+        
+    </article>
+    <p class="one" id="wypisz1"></p>
+    <p id="wypisz2"></p>
+    <p id="wypisz3"></p>
+    <p id="wypisz4"></p>
+    <p id="wypisz5"></p>
+    <p class="last" id="wypisz6"></p>
+</BODY>
+
+<script language="JavaScript" type="text/javascript">
+    function checkData(){
+    var suma=0;
+
+    document.getElementById('ckb1').style.outline = "none";
+    document.getElementById('ckb2').style.outline = "none";
+    
+    var wolontariat=document.getElementById('ckb1').value;
+    var olimpiada=document.getElementById('ckb2').value;
+
+    var el=document.getElementById('lista').value;
+
+    wolontariat=parseInt(wolontariat);
+    olimpiada=parseInt(olimpiada);
+
+    suma=parseInt(suma);
+
+
+        if(document.getElementById('ckb1').checked){
+            document.getElementById('wypisz3').innerHTML="Kandydat uczestniczył w wolontariacie.";
+            document.getElementById('ckb1').style.outline = "solid 1px green";
+            suma = suma + wolontariat;
+        }
+        else{
+            document.getElementById('wypisz3').innerHTML="Kandydat nie uczestniczył w wolontariacie.";
+        }
+        if(document.getElementById('ckb2').checked){
+            document.getElementById('wypisz4').innerHTML="Kandydat został laureatem olimpiady.";
+            document.getElementById('ckb2').style.outline = "solid 1px green";
+            suma = suma + olimpiada;
+        }
+        else{
+            document.getElementById('wypisz4').innerHTML="Kandydat nie został laureatem olimpiady.";
+        }
+
+        switch(parseInt(document.getElementById('pl').value)){
+            case 6:
+            suma= suma + 20;
+            break;
+            case 5:
+            suma= suma + 18;
+            break;
+            case 4:
+            suma= suma + 16;
+            break;
+            case 3:
+            suma= suma + 12;
+            break;
+            case 2:
+            suma= suma + 2;
+            break;
+            case 1:
+            suma= suma + 0;
+            break;
+        }
+        switch(parseInt(document.getElementById('ang').value)){
+            case 6:
+            suma= suma + 20;
+            break;
+            case 5:
+            suma= suma + 18;
+            break;
+            case 4:
+            suma= suma + 16;
+            break;
+            case 3:
+            suma= suma + 12;
+            break;
+            case 2:
+            suma= suma + 2;
+            break;
+            case 1:
+            suma= suma + 0;
+            break;
+        }
+        switch(parseInt(document.getElementById('mat').value)){
+            case 6:
+            suma= suma + 20;
+            break;
+            case 5:
+            suma= suma + 18;
+            break;
+            case 4:
+            suma= suma + 16;
+            break;
+            case 3:
+            suma= suma + 12;
+            break;
+            case 2:
+            suma= suma + 2;
+            break;
+            case 1:
+            suma= suma + 0;
+            break;
+        }
+        switch(parseInt(document.getElementById('inf').value)){
+            case 6:
+            suma= suma + 20;
+            break;
+            case 5:
+            suma= suma + 18;
+            break;
+            case 4:
+            suma= suma + 16;
+            break;
+            case 3:
+            suma= suma + 12;
+            break;
+            case 2:
+            suma= suma + 2;
+            break;
+            case 1:
+            suma= suma + 0;
+            break;
+        }
+        
+        var datazgl;
+        var imie;
+        var nazwisko;
+        var kierunek;
+        datazgl = document.getElementById('data').value;
+        imie = document.getElementById('imie').value;
+        nazwisko = document.getElementById('nazwisko').value;
+        kierunek = document.getElementById('lista').value;
+        document.getElementById('wypisz1').innerHTML="Imię i nazwisko kandydata: " + imie + " " + nazwisko;
+        document.getElementById('wypisz2').innerHTML="Kierunek kształcenia: " + kierunek;
+        document.getElementById('wypisz5').innerHTML="Data zgłoszenia: " + datazgl;
+        document.getElementById('wypisz6').innerHTML="Suma zdobytych punktów wynosi: " + suma + " pkt";
+        
+    }
+
+
+    
+
+
+    </script>
+</HTML>
+
